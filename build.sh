@@ -14,9 +14,10 @@ VERSION="3.09b"
 test "$CC" = "" && CC="gcc"
 
 BASIC_CFLAGS="-Wall -Wno-format -I/usr/local/include/ \
-              -I/opt/local/include/ -DVERSION=\"$VERSION\" $CFLAGS"
+    -I ./windows/winpcap/Include/ \
+    -I/opt/local/include/ -DVERSION=\"$VERSION\" $CFLAGS"
 
-BASIC_LDFLAGS="-L/usr/local/lib/ -L/opt/local/lib $LDFLAGS"
+BASIC_LDFLAGS="-L/usr/local/lib/ -L/opt/local/lib -L./windows/winpcap $LDFLAGS"
 
 USE_CFLAGS="-fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2 -g -ggdb \
             $BASIC_CFLAGS"
